@@ -348,7 +348,7 @@ class ScanCompromisedPackagesIntegrationTest(unittest.TestCase):
             self.assertEqual(result.returncode, 0)
             self.assertIn("Warning: package.json found", result.stdout)
             self.assertIn("Lock files", result.stdout)
-            self.assertIn("Docker", result.stdout)
+            self.assertIn("docker environment", result.stdout)
 
 
 if __name__ == "__main__":  # pragma: no cover

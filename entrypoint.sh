@@ -1,12 +1,22 @@
 #!/bin/sh
 set -e
 
-# Colors for output
-YELLOW='\033[1;33m'
-GREEN='\033[0;32m'
-BLUE='\033[0;34m'
-RED='\033[0;31m'
-NC='\033[0m' # No Color
+# Detect if terminal supports colors
+if [ -t 1 ] && [ "$TERM" != "dumb" ]; then
+    # Colors for output (terminal supports colors)
+    YELLOW='\033[1;33m'
+    GREEN='\033[0;32m'
+    BLUE='\033[0;34m'
+    RED='\033[0;31m'
+    NC='\033[0m' # No Color
+else
+    # No colors (non-interactive or unsupported terminal)
+    YELLOW=''
+    GREEN=''
+    BLUE=''
+    RED=''
+    NC=''
+fi
 
 PROJECT_DIR="."
 FORCE_LOCK_GENERATION=false

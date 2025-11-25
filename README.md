@@ -39,11 +39,13 @@ docker build -t npm-scanner .
 
 ```bash
 # Scan a project in the current directory (requires existing lockfiles)
-docker run --rm -v $(pwd):/project npm-scanner
+docker run -u $(id -u)  --rm -v $(pwd):/project devopsobj/npm-compromised-package-scanner:latest
 
 # Scan a specific directory (requires existing lockfiles)
-docker run --rm -v /path/to/project:/project npm-scanner
+docker run -u $(id -u)  --rm -v /path/to/project:/project devopsobj/npm-compromised-package-scanner:latest
 ```
+
+Make sure to set the user ID of the container to match the user ID of the user running the container. This is to avoid permission issues when scanning the project.
 
 The container's entrypoint script will:
 1. Check if lockfiles exist (package-lock.json, yarn.lock, pnpm-lock.yaml)
