@@ -35,6 +35,12 @@ This is the **recommended and safe way** to scan projects. All package manager o
 docker build -t npm-scanner .
 ```
 
+Alternatively, you can pull the image from (Docker Hub)[https://hub.docker.com/r/devopsobj/npm-compromised-package-scanner]:
+
+```bash
+docker pull devopsobj/npm-compromised-package-scanner:latest
+```
+
 #### Step 2: Run the Scanner
 
 ```bash
